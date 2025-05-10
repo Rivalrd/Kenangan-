@@ -77,3 +77,46 @@
 
 </body>
 </html>
+<!-- Musik Latar -->
+<audio autoplay loop>
+  <source src="musik-latar.mp3" type="audio/mpeg">
+  Browser Anda tidak mendukung audio.
+</audio>
+
+<!-- Slideshow Foto -->
+<div class="slideshow">
+  <img src="foto1.jpg" class="slide-image active" alt="Kenangan 1">
+  <img src="foto2.jpg" class="slide-image" alt="Kenangan 2">
+  <img src="foto3.jpg" class="slide-image" alt="Kenangan 3">
+</div>
+.slideshow {
+  position: relative;
+  max-width: 100%;
+  height: 400px;
+  margin: 20px 0;
+}
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.slide-image.active {
+  opacity: 1;
+  z-index: 1;
+}
+<script>
+  // Script slideshow
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide-image');
+
+  setInterval(() => {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+  }, 3000); // Ganti slide setiap 3 detik
+</script>
